@@ -2,8 +2,7 @@ package interfaz;
 
 import clases.Alphabet;
 import clases.Lambda;
-import clases.NoParentesis;
-import clases.Parentesis;
+import clases.AlgoritmoRecursivo;
 import static clases.Principal.deleteSpacesFromRegularExpression;
 import static clases.Principal.enterDots;
 import static clases.Principal.existsParenetesis;
@@ -162,20 +161,14 @@ public class FrmRE extends javax.swing.JFrame {
             Boolean existsParentesis = existsParenetesis(regularExpression);
             int i;
             
-            if(existsParentesis){
-                Parentesis parentesis = new Parentesis();
-                listOfWords = parentesis.getMatrixResult(regularExpression);
+            AlgoritmoRecursivo parentesis = new AlgoritmoRecursivo();
+            listOfWords = parentesis.getMatrixResult(regularExpression);
 
-                if(listOfWords == null){
-                    JOptionPane.showMessageDialog(null,"Lista Vacia");
-                    return;
-                }
+            if(listOfWords == null){
+                JOptionPane.showMessageDialog(null,"Lista Vacia");
+                return;
             }
-            else{
-                NoParentesis np = new NoParentesis(regularExpression);
-                listOfWords = np.getMatrix();
-            }
-
+            
             Collections.sort(listOfWords,(String s1, String s2)->{
                 int h , s1Count = 0, s2Count = 0;
                 for(h = 0;h < s1.length(); h++){

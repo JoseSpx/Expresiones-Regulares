@@ -1,84 +1,10 @@
 package clases;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Stack;
 
 
 public class Principal {
     
-    public static void main(String[] args) {
-        
-        Boolean bandValidate;
-        String alphabet = Alphabet.ALPHABET;
-        
-        String regularExpression = "(a*)";
-        int numberOfWords = 20;
-        
-        regularExpression = deleteSpacesFromRegularExpression(regularExpression);
-        bandValidate = validateRegularExpression(regularExpression);
-        
-        if(!bandValidate){
-            System.out.println("No valid");
-            return;
-        }
-        
-        regularExpression = enterDots(alphabet, regularExpression);
-        
-        // verify if exits Parentesis
-        Boolean existsParentesis = existsParenetesis(regularExpression);
-        int i;
-        ArrayList<String> listResult;
-        long start = System.nanoTime();
-        if(existsParentesis){
-            System.out.println("Parentesis");
-            Parentesis parentesis = new Parentesis();
-            listResult = parentesis.getMatrixResult(regularExpression);
-            
-            if(listResult == null){
-                System.out.println("vacioooo");
-                return;
-            }
-
-        }
-        else{
-            System.out.println("No Parentesis");
-
-            NoParentesis np = new NoParentesis(regularExpression);
-            listResult = np.getMatrix();
-            
-        }
-        
-        Collections.sort(listResult,(String s1, String s2)->{
-            int h , s1Count = 0, s2Count = 0;
-            for(h = 0;h < s1.length(); h++){
-                if(String.valueOf(s1.charAt(h)).equals(Lambda.VALUE)){
-                    s1Count++;
-                }
-            }
-            for(h = 0;h < s2.length(); h++){
-                if(String.valueOf(s2.charAt(h)).equals(Lambda.VALUE)){
-                    s2Count++;
-                }
-            }
-            s1Count = s1.length() - s1Count;
-            s2Count = s2.length() - s2Count;
-            return s1Count - s2Count;
-        });
-        
-        if(numberOfWords > listResult.size()){
-                numberOfWords = listResult.size();
-        }
-        
-        for(i = 0; i < numberOfWords ; i++){
-                System.out.println("Word #"+(i+1)+ " : " + listResult.get(i));
-        }
-
-        System.out.println("Regular Expression  : " + regularExpression);
-        long end = System.nanoTime();
-        System.out.println("Tiempo : " + (end - start)/ 1000000000);
-  
-    }
     
     public static Boolean existsParenetesis(String regularExpression){
         int size = regularExpression.length();

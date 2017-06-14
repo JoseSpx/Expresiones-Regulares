@@ -3,7 +3,7 @@ package clases;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class Parentesis {
+public class AlgoritmoRecursivo {
 
     private ArrayList<String> listOfParentesis = new ArrayList<>();
     
