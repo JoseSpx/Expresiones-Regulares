@@ -12,6 +12,9 @@ import java.util.Collections;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+/*
+    Autor : Suarez Principe Jose Alfred - Universidad Nacional de Trujillo
+*/
 
 public class FrmRE extends javax.swing.JFrame {
 
